@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика двух личностей</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7C3AED;
+            --primary-light: #8B5CF6;
+            --primary-dark: #6D28D9;
+            --secondary: #FDE68A;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --background: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --completed: #10B981;
+            --pending: #F59E0B;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --gradient: linear-gradient(135deg, #7C3AED 0%, #6366F1 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(at 10% 20%, rgba(124, 58, 237, 0.1) 0px, transparent 50%),
+                radial-gradient(at 90% 80%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo i {
+            margin-right: 12px;
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: var(--primary-dark);
+        }
+
+        .back-button i {
+            margin-right: 0.5rem;
+        }
+
+        .policy-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            animation: slideUp 1s ease-out;
+        }
+
+        .policy-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .policy-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .last-updated {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .policy-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 0.7rem;
+            font-size: 1.1rem;
+        }
+
+        .policy-text {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .policy-list {
+            list-style-type: none;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-list li {
+            margin-bottom: 0.7rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .policy-list li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-info {
+            background: rgba(124, 58, 237, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .contact-title {
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: auto;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            padding-top: 2rem;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .policy-container {
+                padding: 1.5rem;
+            }
+            
+            .policy-title {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i> Наши задачи
+            </div>
+            <div class="subtitle">Политика двух личностей</div>
+        </header>
+
+        <a href="/" class="back-button">
+            <i class="fas fa-arrow-left"></i> Назад к приложению
+        </a>
+
+        <div class="policy-container">
+            <div class="policy-header">
+                <h1 class="policy-title">Политика двух личностей</h1>
+                <div class="last-updated">Последнее обновление: 18 сентября 2025 года</div>
+            </div>
+
+            <div class="policy-section">
+                <h2 class="section-title">
+                    <i class="fas fa-info-circle"></i> Общие положения
+                </h2>
+                <p class="policy-text">
+                    Настоящая Политика двух личностей персональных данных описывает, как Elegant Tasks собирает, использует и защищает вашу личную информацию при использовании нашего приложения для планирования задач.
+                </p>
+                <p class="policy-text">
+                    Используя наше приложение, вы соглашаетесь с условиями сбора и использования информации в соответствии с этой политикой.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2 class="section-title">
+                    <i class="fas fa-database"></i> Собираемая информация
+                </h2>
+                <p class="policy-text">При использовании нашего приложения мы можем собирать следующую информацию:</p>
+                <ul class="policy-list">
+                    <li>Созданные вами задачи и связанные с ними данные</li>
+                    <li>Даты выполнения и статус задач</li>
+                    <li>Информация об устройстве и браузере</li>
+                    <li>Данные об использовании приложения (анонимные)</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2 class="section-title">
+                    <i class="fas fa-lock"></i> Хранение и защита данных
+                </h2>
+                <p class="policy-text">
+                    Все данные хранятся локально на вашем устройстве с использованием современных технологий шифрования. Мы не передаем ваши персональные данные третьим лицам.
+                </p>
+                <p class="policy-text">
+                    Приложение использует локальное хранилище браузера для сохранения ваших задач, что обеспечивает максимальную конфиденциальность.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2 class="section-title">
+                    <i class="fas fa-cookie"></i> Использование файлов cookie
+                </h2>
+                <p class="policy-text">
+                    Наше приложение не использует файлы cookie для отслеживания пользователей. Мы можем использовать локальное хранилище браузера исключительно для функциональности приложения.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2 class="section-title">
+                    <i class="fas fa-shield-alt"></i> Ваши права
+                </h2>
+                <p class="policy-text">Вы имеете право:</p>
+                <ul class="policy-list">
+                    <li>Знать, какие ваши данные хранятся в приложении</li>
+                    <li>Удалить все данные через функцию очистки в приложении</li>
+                    <li>Экспортировать свои данные в удобном формате</li>
+                    <li>Отказаться от хранения данных в любое время</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2 class="section-title">
+                    <i class="fas fa-link"></i> Ссылки на другие сайты
+                </h2>
+                <p class="policy-text">
+                    Наше приложение может содержать ссылки на другие сайты. Если вы переходите по ссылке на сторонний сайт, please note that мы не контролируем эти сайты и не несем ответственности за их политику конфиденциальности.
+                </p>
+            </div>
+
+            <div class="policy-section">
+                <h2 class="section-title">
+                    <i class="fas fa-exchange-alt"></i> Изменения в политике
+                </h2>
+                <p class="policy-text">
+                    Мы можем периодически обновлять нашу Политику двух личностей. Любые изменения будут опубликованы на этой странице с указанием даты последнего обновления.
+                </p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-title">Контактная информация</div>
+                <p class="policy-text">Если у вас есть вопросы о нашей Политике двух личностей, пожалуйста, свяжитесь с нами:</p>
+                <p class="policy-text">Email: privacy@eleganttasks.com</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Наши задачи — Элегантный планировщик задач</p>
+        </footer>
+    </div>
+</body>
+</html>
